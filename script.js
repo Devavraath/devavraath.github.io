@@ -69,7 +69,7 @@ function updateTable() {
         
         // Create a link to Google Maps for the location
         const googleMapsLink = document.createElement("a");
-        googleMapsLink.href = `https://www.google.com/maps?q=${encodeURIComponent(location.name)}`;
+        googleMapsLink.href = `https://maps.google.com/maps?q=${encodeURIComponent(location.name)}`;
         googleMapsLink.target = "_blank"; // Open link in a new tab
         googleMapsLink.textContent = "View on Google Maps";
         cell4.appendChild(googleMapsLink);
