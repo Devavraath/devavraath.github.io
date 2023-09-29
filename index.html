@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Location Sorter</title>
-     <link rel="stylesheet" href="web.css">
+    <title>School Finder</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmBEyECXRgmVaL8sTy6Mdo3tJJodIjKRQ&libraries=places"></script>
 </head>
  <style>
@@ -15,15 +14,28 @@
     </style>
 <body>
     <h1>School Location Sorter</h1>
-    
-    <!-- Get Current Location Button -->
-    <div class="button-container">
+<div class="center-input">
+  <h3>Step 1: Set your home location or Click Get Current Location</h3>
+  <div class="input-container">
+    <input id="base-location-input" type="text" placeholder="Set your Home Location">
+      Or
     <button onclick="getCurrentLocation()">Get Current Location</button>
-     </div>
+  </div>
+  <!-- Add a div to display the selected base location --> 
+  <h2 id="selected-base-location-display"></h2>
+</div>
+
     
     <!-- Current Location Display -->
-    <div id="current-location"></div>
+    <h2 id="current-location"></h2>
+   <hr> 
+  <div class="center-input">
+  <h3>
     
+    Step 2:
+    
+    Search for your school name or school location or nearest landmark
+  </h3>
     <!-- Autocomplete Input -->
     <input id="location-input" type="text" placeholder="Enter a location">
     
