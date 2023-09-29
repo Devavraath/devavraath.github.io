@@ -25,7 +25,7 @@ const baseAutocomplete = new google.maps.places.Autocomplete(baseLocationInput);
 baseAutocomplete.addListener("place_changed", function() {
     const place = baseAutocomplete.getPlace();
 
-    document.getElementById("selected-base-location-display").textContent = `Your Base Location is selected as: ${place.name}`;
+    document.getElementById("selected-base-location-display").textContent = `Your Home Location is selected as: ${place.name}`;
     }
 );
 
