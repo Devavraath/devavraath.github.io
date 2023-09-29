@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Finder</title>
+    <title>School Finder Web App</title>
     <link rel="stylesheet" href="web.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmBEyECXRgmVaL8sTy6Mdo3tJJodIjKRQ&libraries=places"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.2.1/exceljs.min.js"></script>
+
+
 </head>
  <style>
         /* CSS to center-align buttons */
@@ -14,9 +17,10 @@
         }
     </style>
 <body>
-    <h1>School Location Sorter</h1>
+    <h1>School Finder Web App</h1>
 <div class="center-input">
-  <h3>Step 1: Set your home location or Click Get Current Location</h3>
+  <h3>Step 1: Enter your home location or Click 'Get Current Location' button</h3>
+  <p>(Choose only one)</p>
   <div class="input-container">
     <input id="base-location-input" type="text" placeholder="Set your Home Location">
       Or
@@ -57,7 +61,7 @@
     
     <!-- Excel Download Button -->
   <div class="button-container">
-    <button onclick="downloadExcel()">Download Excel</button>
+    <button onclick="downloadExcel()">Download List in Excel</button>
   </div>
   <div class="button-container">
   <p> Developed with Love and ChatGPT!</p>
