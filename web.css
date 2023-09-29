@@ -14,6 +14,23 @@ h1 {
     color: #fff;
 }
 
+        /* Define the red button style */
+  .reset-button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+     position: absolute;
+    right: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style on hover */
+        .reset-button:hover {
+            background-color: darkred;
+        }
+
+
 
 .center-input {
     text-align: center;
