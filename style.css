@@ -3,11 +3,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
 }
 
 /* Header styles */
 h1 {
     text-align: center;
+    color: #333;
+    padding: 20px 0;
+    background-color: #007bff;
+    color: #fff;
 }
 
 /* Location input and table container styles */
@@ -16,34 +21,46 @@ h1 {
     padding: 10px;
     margin: 10px 0;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
 }
 
 #location-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Table header styles */
 #location-table th {
-    background-color: #f2f2f2;
+    background-color: #007bff;
+    color: #fff;
     text-align: left;
-    padding: 10px;
+    padding: 15px;
 }
 
 /* Table cell styles */
 #location-table td {
     border-bottom: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px;
 }
 
 /* Current location display styles */
 #current-location {
     text-align: center;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 /* Download button styles */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
 button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -51,8 +68,21 @@ button {
     border: none;
     cursor: pointer;
     font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* Link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
 }
