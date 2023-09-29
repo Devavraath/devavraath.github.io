@@ -107,23 +107,53 @@ function downloadExcel() {
         return;
     }
 
-    const data = [["Serial Number","Location", "Distance", "Travel Time", "Link"]];
-    locations.forEach((location,index) => {
-        const googleMapsLink = `https://www.google.com/maps?q=${encodeURIComponent(location.name)}`;
-        // Create a hyperlink formula for the "Link" column
-        const hyperlinkFormula = `=HYPERLINK("${googleMapsLink}", "Google Maps Link")`;
-        data.push([index+1, location.name, location.distance, location.duration, hyperlinkFormula]);
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("Locations");
+
+    // Add headers and set alignment for header cells
+    const headerRow = worksheet.addRow(["Serial Number", "Location", "Distance", "Travel Time", "Link"]);
+    headerRow.eachCell((cell) => {
+        cell.alignment = { horizontal: "center" }; // Align headers to center
     });
 
-    const ws = XLSX.utils.aoa_to_sheet(data);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Locations");
+    // Define cell style for hyperlinks
+    const hyperlinkStyle = {
+        font: { color: { argb: "0000FF" }, underline: true },
+        alignment: { horizontal: "left" }, // Align hyperlinks to the left
+    };
 
-    // Generate Excel file and trigger download
-    XLSX.writeFile(wb, "school_locations.xlsx");
+    // Add data rows with hyperlinks and set alignment for data cells
+    locations.forEach((location, index) => {
+        const googleMapsLink = `https://www.google.com/maps?q=${encodeURIComponent(location.name)}`;
+        const row = worksheet.addRow([index + 1, location.name, location.distance, location.duration, "Google Maps Link"]);
+        const cell = row.getCell(5); // Assuming the "Link" is in the 5th column
+
+        // Apply hyperlink style
+        cell.value = {
+            text: "Google Maps Link",
+            hyperlink: googleMapsLink,
+        };
+        cell.style = hyperlinkStyle;
+
+        row.eachCell((dataCell) => {
+            dataCell.alignment = { horizontal: "center" }; // Align data cells to center
+        });
+    });
+
+    // Create a Blob containing the Excel file
+    workbook.xlsx.writeBuffer().then((buffer) => {
+        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+
+        // Create a download link and trigger the download
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'school_locations.xlsx';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
 }
-
-
 
 // Autocomplete for location input
 const locationInput = document.getElementById("location-input");
