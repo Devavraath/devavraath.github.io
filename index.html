@@ -19,7 +19,7 @@
 <body>
     <h1>School Finder Web App</h1>
 <div class="center-input">
-  <h3>Step 1: Enter your home location or Click 'Get Current Location' button</h3>
+  <h3>Step 1: Set your home location or Click Get Current Location</h3>
   <p>(Choose only one)</p>
   <div class="input-container">
     <input id="base-location-input" type="text" placeholder="Set your Home Location">
@@ -43,7 +43,7 @@
   </h3>
     <!-- Autocomplete Input -->
     <input id="location-input" type="text" placeholder="Enter a location">
-      <p>(Carefully select each location)</p>
+    <p>(Carefully select the location)
     
     <!-- Location Table -->
     <h2>Location and Distance</h2>
@@ -62,9 +62,8 @@
     
     <!-- Excel Download Button -->
   <div class="button-container">
-    <button onclick="downloadExcel()">Download List in Excel</button>
-  </div>
-  <div class="button-container">
+    <button onclick="downloadExcel()">Download Excel</button>
+    <button class = "reset-button" id="reset-button">Reset Data</button>
   <p> Developed with Love and ChatGPT!</p>
   </div>
 
