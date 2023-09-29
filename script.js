@@ -2,6 +2,11 @@
 let currentLocation;
 let locations = [];
 
+if (localStorage.getItem("locations")) {
+    locations = JSON.parse(localStorage.getItem("locations"));
+    updateTable();
+}
+
 function getCurrentLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -155,6 +160,13 @@ function downloadExcel() {
     });
 }
 
+
+
+
+
+
+
+
 // Autocomplete for location input
 const locationInput = document.getElementById("location-input");
 const autocomplete = new google.maps.places.Autocomplete(locationInput);
@@ -166,3 +178,15 @@ autocomplete.addListener("place_changed", function() {
         locationInput.value = "";
     }
 });
+function resetData() {
+    if (confirm("Are you sure you want to reset all data?")) {
+        locations = [];
+        updateTable();
+        // Clear data from localStorage
+        localStorage.removeItem("locations");
+    }
+}
+
+// Add a button to reset data
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", resetData);
