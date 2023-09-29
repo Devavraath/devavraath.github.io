@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Location Sorter</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmBEyECXRgmVaL8sTy6Mdo3tJJodIjKRQ&libraries=places"></script>
+</head>
+ <style>
+        /* CSS to center-align buttons */
+        .button-container {
+            text-align: center;
+        }
+    </style>
+<body>
+    <h1>School Location Sorter</h1>
+    
+    <!-- Get Current Location Button -->
+    <div class="button-container">
+    <button onclick="getCurrentLocation()">Get Current Location</button>
+     </div
+    
+    <!-- Current Location Display -->
+    <div id="current-location"></div>
+    
+    <!-- Autocomplete Input -->
+    <input id="location-input" type="text" placeholder="Enter a location">
+    
+    <!-- Location Table -->
+    <h2>Location and Distance</h2>
+    <table id="location-table">
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Distance (km)</th>
+              <th>Travel time</h>
+              <th>Link</th>
+             <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    
+    <!-- Excel Download Button -->
+  <div class="button-container">
+    <button onclick="downloadExcel()">Download Excel</button>
+  </div>
+  <div class="button-container">
+  <p> Developed with Love and ChatGPT!</p>
+  </div>
+
+    <!-- Include xlsx library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+
+    <!-- Include JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
