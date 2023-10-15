@@ -6,23 +6,42 @@ function getCurrentLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            document.getElementById("current-location").textContent = `Obtained your Current Location: ${currentLocation}`;
+            document.getElementById("current-location").textContent = `Current Location taken`;
         });
     } else {
         alert("Geolocation is not supported by this browser.");
     }
 }
 
+// Autocomplete for base location input
+const baseLocationInput = document.getElementById("base-location-input");
+const baseAutocomplete = new google.maps.places.Autocomplete(baseLocationInput);
+
+baseAutocomplete.addListener("place_changed", function() {
+    const place = baseAutocomplete.getPlace();
+
+    document.getElementById("selected-base-location-display").textContent = `Your Base Location is selected as: ${place.name}`;
+    }
+);
+
+// Updated calculateDistanceAndTime function
 function calculateDistanceAndTime(locationName) {
-    if (!currentLocation) {
-        alert("Please get your current location first.");
+    let origin;
+    if (baseLocationInput.value) {
+        // Use the base location if it's entered
+        origin = baseLocationInput.value;
+    } else if (currentLocation) {
+        // Use the current location if available
+        origin = currentLocation;
+    } else {
+        alert("Please get your current location or enter a base location first.");
         return;
     }
 
     const service = new google.maps.DistanceMatrixService();
     service.getDistanceMatrix(
         {
-            origins: [currentLocation],
+            origins: [origin],
             destinations: [locationName],
             travelMode: "DRIVING",
         },
